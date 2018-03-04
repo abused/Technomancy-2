@@ -1,0 +1,17 @@
+{
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "technom",
+    "name": "Technomancy",
+    "description": "Science and magic. What could go wrong?",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "http://goo.gl/3q163x",
+    "updateUrl": "",
+    "authorList": ["Democretes", "theflogat", "Mordenkainen"],
+    "credits": "Azanor for Thaumcraft, CoFH for Thermal Expansion, FTB forums for support and ideas.",
+    "logoFile": "assets/technom/Technomancy.png",
+    "screenshots": [],
+    "dependencies": []
+  }]
+}
