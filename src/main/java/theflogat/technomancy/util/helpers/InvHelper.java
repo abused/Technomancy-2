@@ -25,7 +25,7 @@ public class InvHelper {
 		}
 		for(int i : slots){
 			if(tile instanceof ISidedInventory ? ((ISidedInventory)tile).canInsertItem(i, items, dir) : tile.isItemValidForSlot(i, items)) {
-				if(tile.getStackInSlot(i)==null){
+				if(tile.getStackInSlot(i).isEmpty()){
 					tile.setInventorySlotContents(i, items);
 				}else if(tile.getStackInSlot(i).getItem()==items.getItem()){
 					int maxSize = Math.min(tile.getInventoryStackLimit(), tile.getStackInSlot(i).getItem().getItemStackLimit(tile.getStackInSlot(i)));	
@@ -36,7 +36,7 @@ public class InvHelper {
 						tile.setInventorySlotContents(i, items);
 						
 						if(returnAm==0){
-							return null;
+							return ItemStack.EMPTY;
 						}else{
 							items.setCount(returnAm);
 							return items;
@@ -53,7 +53,7 @@ public class InvHelper {
 			ISidedInventory inv = (ISidedInventory) tile;
 			for(int i : inv.getSlotsForFace(dir)){
 				if(inv.canInsertItem(i, items, dir)){
-					if(tile.getStackInSlot(i)==null){
+					if(tile.getStackInSlot(i).isEmpty()){
 						tile.setInventorySlotContents(i, items);
 						return true;
 					}
@@ -62,7 +62,7 @@ public class InvHelper {
 		}else{
 			for(int i = 0; i<tile.getSizeInventory(); i++){
 				if(tile.isItemValidForSlot(i, items)){
-					if(tile.getStackInSlot(i)==null){
+					if(tile.getStackInSlot(i).isEmpty()){
 						tile.setInventorySlotContents(i, items);
 						return true;
 					}
@@ -82,7 +82,7 @@ public class InvHelper {
 		for (int i = 0; i < inventory.getSizeInventory(); i++){
 			ItemStack items = inventory.getStackInSlot(i);
 
-			if ((items != null) && (items.getCount() > 0)) {
+			if ((!items.isEmpty()) && (items.getCount() > 0)) {
 				float rx = w.rand.nextFloat() * 0.8F + 0.1F;
 				float ry = w.rand.nextFloat() * 0.8F + 0.1F;
 				float rz = w.rand.nextFloat() * 0.8F + 0.1F;
@@ -98,14 +98,14 @@ public class InvHelper {
 				entityItem.motionY = (w.rand.nextGaussian() * factor + 0.2000000029802322D);
 				entityItem.motionZ = (w.rand.nextGaussian() * factor);
 				w.spawnEntity(entityItem);
-				inventory.setInventorySlotContents(i, null);
+				inventory.setInventorySlotContents(i, ItemStack.EMPTY);
 			}
 		}
 	}
 
 	public static void decrItemStack(ItemStack items){
 		if(items.getCount()==1){
-			items = null;
+			items = ItemStack.EMPTY;
 		}else{
 			items.shrink(1);
 		}
@@ -113,7 +113,7 @@ public class InvHelper {
 
 	public static boolean isEmpty(IInventory te) {
 		for(int i=0;i<te.getSizeInventory();i++){
-			if(te.getStackInSlot(i)!=null)
+			if(!te.getStackInSlot(i).isEmpty())
 				return false;
 		}
 		return true;
@@ -121,7 +121,7 @@ public class InvHelper {
 
 	public static boolean isFull(IInventory te) {
 		for(int i=0;i<te.getSizeInventory();i++){
-			if(te.getStackInSlot(i)==null)
+			if(te.getStackInSlot(i).isEmpty())
 				return false;
 		}
 		return true;
@@ -129,7 +129,7 @@ public class InvHelper {
 
 	public static int getFirstFilledSlot(IInventory te) {
 		for(int i=0;i<te.getSizeInventory();i++){
-			if(te.getStackInSlot(i)!=null)
+			if(!te.getStackInSlot(i).isEmpty())
 				return i;
 		}
 		return -1;

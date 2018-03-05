@@ -19,7 +19,7 @@ import vazkii.botania.api.mana.IManaReceiver;
 public class TileBOProcessor extends TileProcessorBase implements IManaReceiver {
 	
 	public TileBOProcessor() {
-		super(1);
+		super(0);
 	}
 	
 	public int mana = 0;

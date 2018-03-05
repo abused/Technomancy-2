@@ -53,9 +53,3 @@ processResources {
         exclude 'mcmod.info'
     }
 }
-
-jar {
-    manifest {
-        attributes 'FMLAT': 'technomancy_at.cfg'
-    }
-}

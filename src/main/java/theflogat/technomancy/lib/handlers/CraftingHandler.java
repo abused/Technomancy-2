@@ -144,13 +144,13 @@ public class CraftingHandler {
 					'E', TMItems.exGem, 'A', Blocks.ANVIL
 				});
 				if(CompatibilityHandler.te){
-					GameRegistry.addShapelessRecipe(TMBlocks.existenceBurner.getRegistryName(), null, new ItemStack(TMBlocks.existenceBurner, 1, 1), new Ingredient(new ItemStack[]{
+					GameRegistry.addShapelessRecipe(TMBlocks.existenceBurner.getRegistryName(), null, new ItemStack(TMBlocks.existenceBurner, 1, 1), Ingredient.fromStacks(
 						new ItemStack(TMBlocks.existenceBurner), ThermalExpansion.frameMachineBasic, ThermalExpansion.powerCoilSilver
-					}));
+					));
 				} else {
-					GameRegistry.addShapelessRecipe(TMBlocks.existenceBurner.getRegistryName(), null, new ItemStack(TMBlocks.existenceBurner, 1, 1), new Ingredient(new ItemStack[]{
+					GameRegistry.addShapelessRecipe(TMBlocks.existenceBurner.getRegistryName(), null, new ItemStack(TMBlocks.existenceBurner, 1, 1), Ingredient.fromStacks(
 						new ItemStack(TMBlocks.existenceBurner), new ItemStack(Items.REDSTONE), new ItemStack(Blocks.PISTON)
-					}));
+					));
 				}
 			}
 			if(Ids.existenceUser){
@@ -180,12 +180,12 @@ public class CraftingHandler {
 					"RPR",
 					'R', Items.REDSTONE, 'E', TMItems.exGem, 'P', Blocks.PISTON
 				});
-				GameRegistry.addShapelessRecipe(TMBlocks.existencePylon.getRegistryName(), null, new ItemStack(TMBlocks.existencePylon, 1, 1), new Ingredient(new ItemStack[]{
+				GameRegistry.addShapelessRecipe(TMBlocks.existencePylon.getRegistryName(), null, new ItemStack(TMBlocks.existencePylon, 1, 1), Ingredient.fromStacks(
 					new ItemStack(Items.DIAMOND), new ItemStack(TMItems.itemBoost), new ItemStack(TMItems.exGem), new ItemStack(TMBlocks.existencePylon, 1, 0)
-				}));
-				GameRegistry.addShapelessRecipe(TMBlocks.existencePylon.getRegistryName(), null, new ItemStack(TMBlocks.existencePylon, 1, 2), new Ingredient(new ItemStack[]{
+				));
+				GameRegistry.addShapelessRecipe(TMBlocks.existencePylon.getRegistryName(), null, new ItemStack(TMBlocks.existencePylon, 1, 2), Ingredient.fromStacks(
 					new ItemStack(Items.ENDER_PEARL), new ItemStack(Items.DIAMOND), new ItemStack(TMItems.exGem), new ItemStack(TMBlocks.existencePylon, 1, 1)
-				}));
+				));
 			}
 		}
 	}

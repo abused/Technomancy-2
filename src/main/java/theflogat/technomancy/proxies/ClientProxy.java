@@ -56,8 +56,8 @@ public class ClientProxy extends CommonProxy implements IGuiHandler {
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
 		TMItems.registerRenders();
-		TMItems.initPureOresRender();
 		TMBlocks.registerRenders();
+		TMItems.initPureOresRender();
 		for(IModModule mod : CompatibilityHandler.mods) {
 			mod.preInit();
 		}
@@ -65,7 +65,7 @@ public class ClientProxy extends CommonProxy implements IGuiHandler {
 
 	@Override
     public void initRenderers() {
-    	ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileCrystal.class, new TileCrystalRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileCatalyst.class, new TileCatalystRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileItemTransmitter.class, new TileItemTransmitterRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileExistenceFountain.class, new TileExistenceFountainRenderer());

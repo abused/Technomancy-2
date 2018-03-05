@@ -35,7 +35,7 @@ public class BlockBMProcessor extends BlockProcessor {
 			TileEntity te = w.getTileEntity(pos);
 			if(te instanceof TileBMProcessor) {
 				if(((TileBMProcessor)te).owner.equals("")){
-					((TileBMProcessor)te).owner = player.getDisplayName().getFormattedText();
+					((TileBMProcessor)te).owner = player.getUniqueID().toString();
 				}
 				player.openGui(Technomancy.instance, 1, w, pos.getX(), pos.getY(), pos.getZ());
 			}
@@ -48,7 +48,7 @@ public class BlockBMProcessor extends BlockProcessor {
 		super.onBlockPlacedBy(w, pos, state, placer, stack);
 		TileEntity tile = w.getTileEntity(pos);
 		if(tile instanceof TileBMProcessor && placer instanceof EntityPlayer) {
-			((TileBMProcessor)tile).owner = ((EntityPlayer)placer).getDisplayName().getFormattedText();
+			((TileBMProcessor)tile).owner = ((EntityPlayer)placer).getUniqueID().toString();
 		}
 	}
 

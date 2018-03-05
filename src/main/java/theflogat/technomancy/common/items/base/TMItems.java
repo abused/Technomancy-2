@@ -59,7 +59,6 @@ public class TMItems {
     		if (ore.getEnabled()) {
 				ore.setPure(new ItemProcessedOre(ore).setRegistryName("pure" + ore.oreName().substring(3)));
 				ForgeRegistries.ITEMS.register(ore.getPure());
-                Technomancy.proxy.registerWithMapper(ore.getPure(), ore.getNames());
             }
     	}
     }
@@ -68,7 +67,6 @@ public class TMItems {
         for (Ore ore : Ore.ores) {
             if (ore.getEnabled()) {
                 for (int i = 0; i < 6; i++) {
-                    //ResourceLocation location = ore.getPure().getRegistryName();
                     ResourceLocation location = new ResourceLocation("technom:purebase");
                     ModelLoader.setCustomModelResourceLocation(ore.getPure(), i, new ModelResourceLocation(location, "type=" + i));
                 }
@@ -81,34 +79,34 @@ public class TMItems {
         for (Ore ore : Ore.ores) {
             if (ore.getEnabled()) {
                 switch (ore.oreName().substring(3)) {
-                    case "gold":
+                    case "Gold":
                         setItemColor(ore.getPure(), 0xE8EF23);
                         break;
-                    case "iron":
+                    case "Iron":
                         setItemColor(ore.getPure(), 0xBFBFBF);
                         break;
-                    case "copper":
+                    case "Copper":
                         setItemColor(ore.getPure(), 0xE47200);
                         break;
-                    case "tin":
+                    case "Tin":
                         setItemColor(ore.getPure(), 0xA5C7DE);
                         break;
-                    case "lead":
+                    case "Lead":
                         setItemColor(ore.getPure(), 0x444072);
                         break;
-                    case "silver":
+                    case "Silver":
                         setItemColor(ore.getPure(), 0xF9F9F9);
                         break;
-                    case "nickel":
+                    case "Nickel":
                         setItemColor(ore.getPure(), 0xDEE187);
                         break;
-                    case "mithril":
+                    case "Mithril":
                         setItemColor(ore.getPure(), 0xb0c4de);
                         break;
-                    case "platinum":
+                    case "Platinum":
                         setItemColor(ore.getPure(), 0xb0e0e6);
                         break;
-                    case "iridium":
+                    case "Iridium":
                         setItemColor(ore.getPure(), 0xe0ffff);
                         break;
                 }

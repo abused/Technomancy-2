@@ -24,6 +24,7 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
+import org.lwjgl.Sys;
 import theflogat.technomancy.Technomancy;
 
 public class Ore {
@@ -32,14 +33,19 @@ public class Ore {
 	public static final ArrayList<String> oreNames = new ArrayList<String>();
 
 	public static Ore newOre(String dictName, ItemStack ingot, String name) {
+		if(dictName.equals("oreGold")) {
+			oreNames.add(dictName);
+			return new Ore(dictName, ingot, name.toLowerCase(), 0);
+		}
 		oreNames.add(dictName);
-		return new Ore(dictName.toLowerCase(), ingot, name.toLowerCase());
+		return new Ore(dictName, ingot, name.toLowerCase());
 	}
 	
 	public static void init() {
-		newOre("oreGold", FurnaceRecipes.instance().getSmeltingResult(OreDictionary.getOres("oreGold").get(0)), "oreGold".substring("ore".length()));
-		newOre("oreIron", FurnaceRecipes.instance().getSmeltingResult(OreDictionary.getOres("oreIron").get(0)), "oreIron".substring("ore".length()));
+
 		if(Loader.isModLoaded("thermalexpansion")) {
+			newOre("oreGold", FurnaceRecipes.instance().getSmeltingResult(OreDictionary.getOres("oreGold").get(0)), "oreGold".substring("ore".length()));
+			newOre("oreIron", FurnaceRecipes.instance().getSmeltingResult(OreDictionary.getOres("oreIron").get(0)), "oreIron".substring("ore".length()));
 			newOre("oreCopper", OreDictionary.getOres("ingotCopper").get(0), "oreCopper".substring("ore".length()));
 			newOre("oreLead", OreDictionary.getOres("ingotLead").get(0), "oreLead".substring("ore".length()));
 			newOre("oreNickel", OreDictionary.getOres("ingotNickel").get(0), "oreNickel".substring("ore".length()));
@@ -49,7 +55,7 @@ public class Ore {
 			newOre("oreAluminum", OreDictionary.getOres("ingotAluminum").get(0), "oreAluminum".substring("ore".length()));
 			newOre("oreIridium", OreDictionary.getOres("ingotIridium").get(0), "oreIridium".substring("ore".length()));
 			newOre("oreMithril", OreDictionary.getOres("ingotMithril").get(0), "oreMithril".substring("ore".length()));
-		}else {
+		 }else {
 			getMetalsWithPrefixes("ore", "ingot");
 		}
 	}
@@ -120,6 +126,13 @@ public class Ore {
 		this.ingot = ingot;
 		this.name = adjustName(name);
 		ores.add(this);
+	}
+
+	protected Ore(String oreName, ItemStack ingot, String name, int pos) {
+		this.oreName = oreName;
+		this.ingot = ingot;
+		this.name = adjustName(name);
+		ores.add(pos, this);
 	}
 
 	public static String[] getNames() {

@@ -25,7 +25,7 @@ public abstract class TileProcessorBase extends TileTechnomancy implements ISide
 	public TileProcessorBase(int tag) {
 		tagCompound = processors[tag];
 	}
-	protected String[] processors = {"Botania", "Blood Magic", "Ars Magica", "Totemic" };
+	protected String[] processors = {"Botania", "Blood Magic" };
 
 	@Override
 	public void update() {
@@ -44,7 +44,7 @@ public abstract class TileProcessorBase extends TileTechnomancy implements ISide
 						isActive = !process();
 					} else {
 						ItemStack stack = getOutput(inv.get(0));
-						if(getFuel(stack, stack.getItemDamage(), stack.getTagCompound().getInteger(tagCompound))) {
+						if(getFuel(stack, stack.getCount(), 5)) {
 							progress--;
 						}
 					}
@@ -119,9 +119,9 @@ public abstract class TileProcessorBase extends TileTechnomancy implements ISide
 	}
 
 	protected Item itemFromOreDictName(ItemStack items) {
-		for(int i : OreDictionary.getOreIDs(items)) {			
-			for(int j = 0; j < Ore.ores.size(); j++) {
-				if(Ore.ores.get(j).oreName() == OreDictionary.getOreName(i)) {
+		for(int i : OreDictionary.getOreIDs(items)) {
+			for(int j = 0; j < Ore.oreNames.size(); j++) {
+				if(Ore.oreNames.get(j) == OreDictionary.getOreName(i)) {
 					return Ore.ores.get(j).getPure();
 				}
 			}

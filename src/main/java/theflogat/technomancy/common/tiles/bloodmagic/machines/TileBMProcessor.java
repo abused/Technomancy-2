@@ -1,6 +1,5 @@
 package theflogat.technomancy.common.tiles.bloodmagic.machines;
 
-import WayofTime.bloodmagic.core.data.SoulNetwork;
 import WayofTime.bloodmagic.util.helper.NetworkHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.EnumFacing;
@@ -13,12 +12,12 @@ public class TileBMProcessor extends TileProcessorBase {
 	public String owner = "";
 
 	public TileBMProcessor() {
-		super(2);
+		super(1);
 	}
 
 	@Override
 	protected boolean getFuel(ItemStack items, int multiplier, int reprocess) {
-		int cost = multiplier * 100 + 1000 * reprocess;
+		int cost = 16;
 		if(!(NetworkHelper.getSoulNetwork(owner).getCurrentEssence() > cost)){
 			return false;
 		}

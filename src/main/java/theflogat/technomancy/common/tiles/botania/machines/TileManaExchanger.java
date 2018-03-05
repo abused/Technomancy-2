@@ -5,7 +5,9 @@ import cofh.redstoneflux.impl.EnergyStorage;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidTankProperties;
 import theflogat.technomancy.common.blocks.base.TMBlocks;
@@ -160,5 +162,22 @@ public class TileManaExchanger extends TileTechnomancyRedstone implements IFluid
 	public boolean onWrenched(boolean sneaking) {
 		mode = !mode;
 		return true;
+	}
+
+	@Override
+	public boolean hasCapability(Capability<?> capability, @Nullable EnumFacing facing) {
+		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			return true;
+		}
+		return super.hasCapability(capability, facing);
+	}
+
+	@Nullable
+	@Override
+	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
+		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
+			return (T) tank;
+		}
+		return super.getCapability(capability, facing);
 	}
 }
