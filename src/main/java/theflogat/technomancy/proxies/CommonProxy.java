@@ -28,7 +28,6 @@ import theflogat.technomancy.lib.Ref;
 public class CommonProxy implements IGuiHandler {
 
     public void initSounds() {
-
     }
 
     public void preInit(FMLPreInitializationEvent e) {
@@ -36,7 +35,6 @@ public class CommonProxy implements IGuiHandler {
 	}
 
     public void initRenderers() {
-
     }
     
     @Override

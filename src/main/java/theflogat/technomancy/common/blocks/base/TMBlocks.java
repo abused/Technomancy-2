@@ -137,6 +137,7 @@ public class TMBlocks {
 		RitualRegistry.add(new RitualOfFireT1());
 	}
 
+	@SideOnly(Side.CLIENT)
 	public static void registerRenders() {
 		regCrystal();
 		regRenders();
@@ -144,7 +145,6 @@ public class TMBlocks {
 		regBlock(fountainExistence);
 		regBlock(itemTransmitter);
 		regBlock(fakeAirLight);
-		manaFluidBlock.regFluid();
 	}
 	
 	public static void registerBlock(Block block, String name) {

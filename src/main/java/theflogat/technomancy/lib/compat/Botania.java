@@ -105,6 +105,7 @@ public class Botania extends ModuleBase {
 		regBlock(TMBlocks.manaExchanger);
 		regBlock(TMBlocks.processorBO);
 		regBlock(TMBlocks.manaFluidBlock);
+		TMBlocks.manaFluidBlock.regFluid();
 	}
 
 	@Override
@@ -157,6 +158,8 @@ public class Botania extends ModuleBase {
 				manaCoilRec = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(TMItems.itemBO, 1, 0), ThermalExpansion.powerCoilSilver, 3000);
 			}
 
+			BotaniaAPI.registerManaInfusionRecipe(FluidUtil.getFilledBucket(new FluidStack(TMBlocks.manaFluid, 1000)), Items.BUCKET, 50000);
+
 			//Normal Recipes
 			if(Ids.matBO) {
 				manaGear = oreDictRecipe(new ItemStack(TMItems.itemBO, 1, 1),
@@ -203,6 +206,8 @@ public class Botania extends ModuleBase {
 			if(Ids.matBO) {
 				manaCoilRec = BotaniaAPI.registerManaInfusionRecipe(new ItemStack(TMItems.itemBO, 1, 0), new ItemStack(Items.REDSTONE), 3000);
 			}
+
+			BotaniaAPI.registerManaInfusionRecipe(FluidUtil.getFilledBucket(new FluidStack(TMBlocks.manaFluid, 1000)), Items.BUCKET, 50000);
 
 			//Normal Recipes
 			if(Ids.matBO) {

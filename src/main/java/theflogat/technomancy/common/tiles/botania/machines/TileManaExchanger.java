@@ -6,6 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.fluids.*;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -169,6 +170,10 @@ public class TileManaExchanger extends TileTechnomancyRedstone implements IFluid
 		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return true;
 		}
+
+		if(capability == CapabilityEnergy.ENERGY) {
+			return true;
+		}
 		return super.hasCapability(capability, facing);
 	}
 
@@ -177,6 +182,10 @@ public class TileManaExchanger extends TileTechnomancyRedstone implements IFluid
 	public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
 		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
 			return (T) tank;
+		}
+
+		if(capability == CapabilityEnergy.ENERGY) {
+			return (T) storage;
 		}
 		return super.getCapability(capability, facing);
 	}

@@ -46,7 +46,6 @@ name = Ref.MOD_NAME,
 version = Ref.MOD_VERSION,
 acceptedMinecraftVersions = "[1.12,1.12.2]",
 dependencies = "after:*")
-
 public class Technomancy {
 
 	@Mod.Instance(Ref.MOD_ID)
@@ -95,7 +94,9 @@ public class Technomancy {
 		PacketHandler.instance = new PacketHandler();
 		new EventRegister();
 
-		proxy.preInit(event);
+		if (event.getSide().isClient()) {
+			proxy.preInit(event);
+		}
 	}
 
 	@Mod.EventHandler
@@ -111,17 +112,17 @@ public class Technomancy {
 		proxy.initRenderers();
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		FMLInterModComms.sendMessage("waila", "register", "theflogat.technomancy.lib.compat.waila.WailaProvider.callbackRegister");
-	}
 
-	@Mod.EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
 		CraftingHandler.initTechnomancyRecipes();
 		CraftingHandler.initFurnaceRecipes();
 
 		for(IModModule mod : CompatibilityHandler.mods) {
 			mod.RegisterRecipes();
 		}
-	
+	}
+
+	@Mod.EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
 		for(IModModule mod : CompatibilityHandler.mods) {
 			mod.PostInit();
 		}

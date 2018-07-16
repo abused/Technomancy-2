@@ -26,17 +26,6 @@ public class BlockManaExchanger extends BlockContainerAdvanced implements IPoolO
 		setCreativeTab(Technomancy.tabsTM);
 		setUnlocalizedName(Ref.MOD_PREFIX + Names.manaExchanger);
 	}
-	/*
-	@Override
-	public IIcon getIcon(World world, int x, int y, int z) {
-		TileManaExchanger tile = (TileManaExchanger) world.getTileEntity(x, y, z);
-		if(tile.active) {
-			return icons[3];
-		} else {
-			return icons[4];
-		}
-	}
-	*/
 
 	@Override
 	public boolean isFullCube(IBlockState state) {

@@ -63,7 +63,7 @@ public class ItemProcessedOre extends ItemBase {
 	}
 
 	/**
-	@Override	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int par) {
 		return itemIcon[par%itemIcon.length];
@@ -74,10 +74,11 @@ public class ItemProcessedOre extends ItemBase {
 	public String getUnlocalizedName(ItemStack stack) {
 		return Ref.MOD_PREFIX + "pure" + ore.oreName().substring(3);
 	}
-	
+
 	@Override
+	@SideOnly(Side.CLIENT)
 	public String getItemStackDisplayName(ItemStack stack) {
-		return String.format(I18n.format("item.techno.pure.name") + ore.name());
+		return I18n.format("item.techno.pure.name") + ore.name();
 	}
 
 	@Override
