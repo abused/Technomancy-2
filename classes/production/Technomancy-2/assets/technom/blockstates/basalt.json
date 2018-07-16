@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "normal": { "model": "technom:basalt" },
-        "inventory": { "model": "technom:basalt" }
-    }
-}
