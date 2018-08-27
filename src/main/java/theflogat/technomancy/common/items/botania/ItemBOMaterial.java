@@ -3,6 +3,7 @@ package theflogat.technomancy.common.items.botania;
 import java.util.List;
 
 import net.minecraft.util.NonNullList;
+import net.minecraftforge.oredict.OreDictionary;
 import theflogat.technomancy.Technomancy;
 import theflogat.technomancy.common.items.base.ItemBase;
 import theflogat.technomancy.lib.Names;
@@ -19,6 +20,7 @@ public class ItemBOMaterial extends ItemBase {
 		this.setUnlocalizedName(Ref.MOD_PREFIX + Names.itemBO);
 		setRegistryName("itembo");
 		Technomancy.proxy.registerWithMapper(this, getNames());
+		OreDictionary.registerOre("gearManasteel",new ItemStack(this,1,1));
 	}
 
 	public String[] getNames() {
