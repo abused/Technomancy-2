@@ -172,13 +172,13 @@ public class Botania extends ModuleBase {
 						new Object[] {" C ", "GIG", "IWI",
 					'W', new ItemStack(Items.REDSTONE),
 					'C', new ItemStack(TMItems.itemBO, 1, 0),
-					'G', new ItemStack(TMItems.itemBO, 1, 1),
+					'G', "gearManasteel",
 					'I', "ingotManasteel"				});
 			}
 			if(Ids.manaFab) {
 				manaFabricator = oreDictRecipe(new ItemStack(TMBlocks.manaFabricator), 
-						new Object[] {"CDC", "IDI", " P ",
-					'C', new ItemStack(TMItems.itemBO, 1, 1),
+						new Object[] {"GDG", "IDI", " P ",
+					'G', "gearManasteel",
 					'I', "ingotManasteel",
 					'D', "manaDiamond",
 					'P', Loader.isModLoaded("thermalexpansion") ? ThermalExpansion.frameCellBasic : Blocks.DIAMOND_BLOCK			});
